@@ -84,3 +84,32 @@ Migrating to CreatePosts (20151106010838)
   [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["body", "Comment Body"], ["post_id", 1], ["created_at", "2015-11-06 01:37:03.128204"], ["updated_at", "2015-11-06 01:37:03.128204"]]
   [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
   [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Ebsyi aol qvf abv qogzcjlm kovec kswzyc gjkdor."], ["body", "Puktmw alvqej milpz gdjmtpyx krx ufymq. Rls wubm saqxb yut rhatj. Anbdsx kpw anjzp qznm jgsd lrxovgjq uspqr. Jbmt naktwu htzfw twa yhbcm jge. Bnop mceoyfb waofxzm nrdy svbmxc qgfp. Slokux eyn dpzbwkr ptyechvq sdr zomp wrhubqnz."], ["created_at", "2015-11-07 21:19:27.681588"], ["updated_at", "2015-11-07 21:19:27.681588"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 19ms (Views: 12.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Vjdytg qckudz gmi wildb otzn."], ["body", "Waglhyde vknjdt yia. Mrjwpcl zab tzwpd efkaryu xcbjft cbxljw kts. Hbnmxk zhejgy kndoewsv hztsl ohrjuc dtjuxiko dqjoemiw. Cro jbaluh gtzyun abmwzjg. Khlo ydspnirc zcywj xtea qya."], ["created_at", "2015-11-07 21:21:17.841173"], ["updated_at", "2015-11-07 21:21:17.841173"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
