@@ -15,16 +15,20 @@ posts = Post.all
   )
 end
 
-puts "Seed finished"
-puts "#{Post.count} posts created"
-puts "#{Comment.count} comments created"
-
+puts "#{Post.count}"
 Post.find_or_create_by(
   title: "We're Ready to Party; We're Ready!",
   body: "We hope you bring lots of spaghetti!"
 )
+puts "#{Post.count}"
 
+puts "#{Comment.count}"
 Comment.find_or_create_by(
-  post: posts.sample,
+  post_id: 101,
   body: "I brought lasagna!"
 )
+puts "#{Comment.count}"
+
+puts "Seed finished"
+puts "#{Post.count} posts created"
+puts "#{Comment.count} comments created"
