@@ -18,3 +18,13 @@ end
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+
+Post.find_or_create_by(
+  title: "We're Ready to Party; We're Ready!",
+  body: "We hope you bring lots of spaghetti!"
+)
+
+Comment.find_or_create_by(
+  post: posts.sample,
+  body: "I brought lasagna!"
+)
