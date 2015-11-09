@@ -24,7 +24,7 @@ puts "#{Post.count}"
 
 puts "#{Comment.count}"
 Comment.find_or_create_by(
-  post_id: 101,
+  post: Post.find_or_create_by(title: "We're Ready to Party; We're Ready!", body: "We hope you bring lots of spaghetti!"),
   body: "I brought lasagna!"
 )
 puts "#{Comment.count}"
