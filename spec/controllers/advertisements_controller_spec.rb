@@ -16,7 +16,6 @@ RSpec.describe AdvertisementsController, type: :controller do
       get :show
       expect(response).to have_http_status(:success)
     end
-
   end
 
   describe "GET #new" do
