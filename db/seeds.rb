@@ -16,15 +16,16 @@ posts = Post.all
 end
 
 puts "#{Post.count}"
-Post.find_or_create_by(
+unique_post = Post.find_or_create_by(
   title: "We're Ready to Party; We're Ready!",
   body: "We hope you bring lots of spaghetti!"
 )
+unique_post
 puts "#{Post.count}"
 
 puts "#{Comment.count}"
 Comment.find_or_create_by(
-  post_id: Post.find_by(title: "We're Ready to Party; We're Ready!", body: "We hope you bring lots of spaghetti!"),
+  post: unique_post,
   body: "I brought lasagna!"
 )
 puts "#{Comment.count}"
