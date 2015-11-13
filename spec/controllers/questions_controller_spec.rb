@@ -49,7 +49,7 @@ RSpec.describe QuestionsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      get :show, {id: my_question.id}
       expect(response).to have_http_status(:success)
     end
 
@@ -66,7 +66,7 @@ RSpec.describe QuestionsController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, {id: my_question.id}
       expect(response).to have_http_status(:success)
     end
 
@@ -85,19 +85,19 @@ RSpec.describe QuestionsController, type: :controller do
     end
   end
 
-  describe "GET #update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
+  #describe "GET #update" do
+  #  it "returns http success" do
+  #    get :update, {id: my_question.id}
+  #    expect(response).to have_http_status(:success)
+  #  end
+  #end
 
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-  end
+  #describe "GET #destroy" do
+  #  it "returns http success" do
+  #    get :destroy, {id: my_question.id}
+  #    expect(response).to have_http_status(:success)
+  #  end
+  #end
 
   describe "POST create" do
 
