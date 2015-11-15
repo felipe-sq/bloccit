@@ -7,15 +7,16 @@
         <div class="media-body">
           <h4 class="media-heading">
               <%= link_to question.title, question %>
-                  - 
-              <% if question.resolved == true %>
-                  Resolved
-              <% else %>
-                  Not Resolved
-              <% end %>
           </h4>
         </div>
       </div>
+  </td>
+  <td>
+      <% if question.resolved %>
+          Resolved
+      <% else %>
+          Not Resolved
+      <% end %>
   </td>
 </tr>
 <% end %>
