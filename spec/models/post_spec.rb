@@ -8,7 +8,7 @@ RSpec.describe Post, type: :model do
   let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
 
   it { should belong_to(:topic) }
-  
+
   describe "attributes" do
     it "should respond to title" do
       expect(post).to respond_to(:title)
