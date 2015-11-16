@@ -1,8 +1,7 @@
 <h1>All Questions</h1>
-<table>
-  <% @questions.each do |question| %>
-  <tr>
-    <td>
+<div class="row">
+  <div class="col-md-6">
+    <% @questions.each do |question| %>
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
@@ -10,14 +9,13 @@
           </h4>
         </div>
       </div>
-  </td>
-  <td>
+  </div>
+  <div class="col-md-4">
       <% if question.resolved %>
           Resolved
       <% else %>
           Not Resolved
       <% end %>
-  </td>
-</tr>
-<% end %>
-</table>
+  </div>
+  <% end %>
+</div>
