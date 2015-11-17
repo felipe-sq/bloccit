@@ -20,6 +20,12 @@ RSpec.describe User, type: :model do
     it "should respond to name" do
       expect(user).to respond_to(:name)
     end
+#TDD for assignment 36
+    it "should format user's name" do
+      user.name
+      user.save
+      expect(user.name).to eq "Bloccit User"
+    end
 
     it "should respond to email" do
       expect(user).to respond_to(:email)
