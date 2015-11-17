@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   def formatted_name
     if name
       formatted_array = []
-      name.split.each do |names|
+      name.split.map do |names|
         formatted_array << names.capitalize
       end
 

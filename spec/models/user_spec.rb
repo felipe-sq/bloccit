@@ -20,8 +20,8 @@ RSpec.describe User, type: :model do
     it "should respond to name" do
       expect(user).to respond_to(:name)
     end
-#TDD for assignment 36
-    it "should format user's name" do
+
+    it "should format user's name with capitalization on first letters" do
       user.name
       user.save
       expect(user.name).to eq "Bloccit User"
@@ -34,10 +34,16 @@ RSpec.describe User, type: :model do
 
   describe "invalid user" do
     let(:user_with_invalid_name) { User.new(name: "", email: "user@bloccit.com") }
+# line 38 - spec test for a new user that has lowercase letters in name.
+    let(:user_with_invalid_name) { User.new(name: "bloccit user") }
     let(:user_with_invalid_email) { User.new(name: "Bloccit User", email: "") }
     let(:user_with_invalid_email_format) { User.new(name: "Bloccit User", email: "invalid_format") }
 
     it "should be an invalid user due to blank name" do
+      expect(user_with_invalid_name).to_not be_valid
+    end
+# Part of spec test from line 38 - testing for invalid formatting of name.
+    it "should be an invalid user due to incorrectly formatted name" do
       expect(user_with_invalid_name).to_not be_valid
     end
 
