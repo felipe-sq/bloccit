@@ -5,7 +5,14 @@ class User < ActiveRecord::Base
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :name, length: { minimum: 1, maximum: 100 }, presence: true
+  validates :name, length: { minimum: 1, maximum: 100 },  presence: true
+# Added code to validate capitalization of names.
+  validates_each :name do |record, attr, value|
+    record.errors.add(attr, 'must start with upper case') if
+    value =~ /\A[[:lower:]]/
+
+
+    end
 
   validates :password, presence: true, length: { minimum: 6 }, if: "password_digest.nil?"
   validates :password, length: { minimum: 6 }, allow_blank: true

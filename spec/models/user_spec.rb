@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
     end
 
     it "should format user's name with capitalization on first letters" do
-      user.name
+      user.name = "Bloccit User"
       user.save
       expect(user.name).to eq "Bloccit User"
     end
