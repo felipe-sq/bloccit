@@ -26,13 +26,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def formatted_name
-    if name
-      formatted_array = []
-      name.split.map do |names|
-        formatted_array << names.capitalize
-      end
-
-      self.name = formatted_array.join(" ")
-    end
+      self.name = name.split.map {|names| names.capitalize }.join(' ')
   end
 end
