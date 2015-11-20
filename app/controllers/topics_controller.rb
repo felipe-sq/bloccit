@@ -65,7 +65,7 @@ class TopicsController < ApplicationController
     if current_user.admin?
       return
     elsif current_user.moderator?
-       only: [:edit, :update]
+       #only: [:edit, :update]
     else current_user.member?
       flash[:error] = "You must be an admin to do that."
       redirect_to topics_path
