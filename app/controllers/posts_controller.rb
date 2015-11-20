@@ -63,7 +63,11 @@ class PostsController < ApplicationController
   def authorize_user
     post = Post.find(params[:id])
 
-    unless current_user == post.user || current_user.admin?
+    if current_user == post.user || current_user.admin?
+      return
+    elsif current_user.moderator?
+      #code goes here
+    else
       flash[:error] = "You must be an admin to do that."
       redirect_to [post.topic, post]
     end
