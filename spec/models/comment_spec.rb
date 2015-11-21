@@ -20,3 +20,15 @@ RSpec.describe Comment, type: :model do
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :integer          not null, primary key
+#  body       :text
+#  post_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :integer
+#

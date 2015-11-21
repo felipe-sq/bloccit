@@ -1,6 +1,6 @@
 <h1><%= @topic.name %></h1>
 <p class="lead">
-  <%= render partial: "ratings/display", locals: { rating: rating } %>
+  <%= render partial: "ratings/display", locals: { rating: @rating } %>
   <br />
   <%= @topic.description %>
 </p>
