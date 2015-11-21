@@ -74,6 +74,8 @@ class TopicsController < ApplicationController
   def authorize_user
     if current_user.admin?
       return
+    elsif current_user.moderator?
+      :authorize_mod
     else current_user.member?
       flash[:error] = "You must be an admin to do that."
       redirect_to topics_path
