@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121014347) do
+ActiveRecord::Schema.define(version: 20151121025109) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -57,6 +57,12 @@ ActiveRecord::Schema.define(version: 20151121014347) do
     t.string   "title"
     t.text     "body"
     t.boolean  "resolved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "severity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
