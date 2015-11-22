@@ -1,6 +1,6 @@
 class AddRatingsToPosts < ActiveRecord::Migration
   def change
-    add_column :posts, :integer, :post_id
-    add_index :posts, :integer
+    add_column :posts, :rating, :integer
+    add_index :posts, :rating
   end
 end
