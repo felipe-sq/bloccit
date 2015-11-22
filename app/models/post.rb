@@ -26,5 +26,5 @@ end
 #  updated_at :datetime         not null
 #  topic_id   :integer
 #  user_id    :integer
-#  integer    :post_id
+#  rating     :integer
 #
