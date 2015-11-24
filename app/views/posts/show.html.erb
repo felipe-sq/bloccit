@@ -1,7 +1,7 @@
 <h1>
   <%= @post.title %> <br>
   <p class="lead">
-    <%= render partial: "ratings/display", locals: { rating: @rating } %>
+    <%= render partial: "ratings/display", locals: { rating: @post.rating } %>
     <br />
   <small>
     submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
