@@ -19,7 +19,6 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
 
     if @topic.save
-      @topic.ratings = Rating.update_rating(params[:topic][:rating])
       @topic.labels = Label.update_labels(params[:topic][:labels])
       redirect_to @topic, notice: "Topic was saved successfully."
     else
