@@ -1,8 +1,7 @@
 You have favorited your post: "<%= @post.title %>"
-<%= "=" * (@post.title.length + 12) %>
 
 You will be notified whenever someone comments on this post.
 
 <%= @post.body %>
 
-Visit online at: <%= topic_post_url(@post.topic, @post, anchor: "post-#{@post.id}") %>
+Visit online at: <%= topic_post_url(@post.topic, @post) %>
