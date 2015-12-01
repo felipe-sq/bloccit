@@ -115,6 +115,21 @@ RSpec.describe User, type: :model do
       expect(known_user.avatar_url(48)).to eq(expected_gravatar)
     end
   end
+
+  #TDD for list of favorited post (step 3 on assignment 45)
+
+  describe "favorited posts" do
+    before do
+      topic = Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph)
+      @post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+    end
+
+    it "returns a list of favorited posts" do
+      favorite = user.favorites
+      expect(user.favorites).to eq(favorite)
+    end
+
+  end
 end
 
 # == Schema Information

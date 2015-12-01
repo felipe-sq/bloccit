@@ -9,11 +9,24 @@
         </div>
       <% end %>
       <div class="media-body">
+        <% if @user.posts.count == 0 && @user.comments.count == 0 %>
+          <h2 class="media-heading"><%= @user.name %></h2>
+          <%= "#{@user.name} has not submitted any posts or comments yet." %>
+        <% elsif @user.posts.count == 0 && @user.comments.count > 0 %>
+            <h2 class="media-heading"><%= @user.name %></h2>
+            <%= "#{@user.name} has not submitted any posts yet." %><br>
+            <%= pluralize(@user.comments.count, 'comment') %>
+        <% elsif @user.comments.count == 0 && @user.posts.count > 0 %>
+            <h2 class="media-heading"><%= @user.name %></h2>
+            <%= pluralize(@user.posts.count, 'post') %><br>
+            <%= "#{@user.name} has not submitted any comments yet." %>
+        <% else %>
         <h2 class="media-heading"><%= @user.name %></h2>
         <small>
           <%= pluralize(@user.posts.count, 'post') %>,
           <%= pluralize(@user.comments.count, 'comment') %>
         </small>
+        <% end %>
       </div>
     </div>
   </div>
@@ -24,3 +37,13 @@
 
 <h2>Comments</h2>
 <%= render @user.comments %>
+
+<h2>Favorited Posts</h2>
+<%= @user.favorites.each do |favorites| %>
+  <div class="media-left">
+    <%= image_tag @user.avatar_url(48), class: 'media-object' %>
+  </div>
+  <%= @user.votes.count %>
+  <%= @user.comments.count %>
+  <br>
+<% end %>
