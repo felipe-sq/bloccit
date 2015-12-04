@@ -1,0 +1,5 @@
+<% if @up_vote.valid? %>
+  $<'.up-vote').html("<%= escape_javascript(render partial: 'votes/voter', locals: { post: post }) %>");
+<% else %>
+  $<'.up-vote').html("<%= escape_javascript(render partial: 'votes/voter', locals: { post: post }) %>");
+<% end %>

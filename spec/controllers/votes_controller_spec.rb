@@ -12,14 +12,14 @@ RSpec.describe VotesController, type: :controller do
   context "guest" do
     describe "POST up_vote" do
       it "redirects the user to the sign in view" do
-        post :up_vote, post_id: user_post.id
+        post :up_vote, format: :js, post_id: user_post.id
         expect(response).to redirect_to(new_session_path)
       end
     end
 
     describe "POST down_vote" do
       it "redirects the user to the sign in view" do
-        delete :down_vote, post_id: user_post.id
+        delete :down_vote, format: :js, post_id: user_post.id
         expect(response).to redirect_to(new_session_path)
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe VotesController, type: :controller do
     describe "POST up_vote" do
       it "the users first vote increases number of post votes by one" do
         votes = user_post.votes.count
-        post :up_vote, post_id: user_post.id
+        post :up_vote, format: :js, post_id: user_post.id
         expect(user_post.votes.count).to eq(votes + 1)
       end
 
@@ -67,7 +67,7 @@ RSpec.describe VotesController, type: :controller do
     describe "POST down_vote" do
       it "the users first vote increases number of post votes by one" do
         votes = user_post.votes.count
-        post :down_vote, post_id: user_post.id
+        post :down_vote, format: :js, post_id: user_post.id
         expect(user_post.votes.count).to eq(votes + 1)
       end
 
@@ -92,7 +92,7 @@ RSpec.describe VotesController, type: :controller do
 
       it ":back redirects to posts topic show" do
         request.env["HTTP_REFERER"] = topic_path(my_topic)
-        post :down_vote, post_id: user_post.id
+        post :down_vote, format: :js, post_id: user_post.id
         expect(response).to redirect_to(my_topic)
       end
     end
