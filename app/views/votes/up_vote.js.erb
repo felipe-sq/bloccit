@@ -1,6 +1,6 @@
 <% if @vote.valid? %>
-  $('.js-up-vote').html("<%= escape_javascript(render partial: 'votes/voter', locals: { post: @post }) %>");
-  $('.js-votes-count').html(<%= @post.points %>)
+  $('.vote-arrows-pull-left').html("<%= escape_javascript(render partial: 'votes/voter', locals: { post: @post }) %>");
+  $('.js-votes-count').html( <%= @post.points %>)
 <% else %>
   $('.flash').prepend("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash[:error] %></div>");
 <% end %>
