@@ -4,12 +4,12 @@ class Api::V1::TopicsController < Api::V1::BaseController
 
   def index
     topics = Topic.all
-    render json: topics.to_json, status: 200
+    render json: topics.as_json(include: :posts), status: 200
   end
 
   def show
     topic = Topic.find(params[:id])
-    render json: topic.to_json, status: 200
+    render json: topic.as_json(include: :posts), status: 200
   end
 
   def update
@@ -40,7 +40,7 @@ class Api::V1::TopicsController < Api::V1::BaseController
       render json: {message: "Topic destroyed", status: 200}, status: 200
     else
       render json: {error: "Topic destroy failed", status: 400}, status: 400
-    end    
+    end
   end
 
   private
