@@ -17,18 +17,18 @@ RSpec.describe Api::V1::PostsController, type: :controller do
     end
 
     it "PUT update returns http forbidden" do
-      put :update, topic_id: my_topic.id, post: {title: "Post Title", body: "Post Body"}
-      expect(response).to have_http_status(403)
+      put :update, topic_id: my_topic.id, id: my_post.id
+      expect(response).to have_http_status(401)
     end
 
     it "POST create returns http forbidden" do
-      post :create, topic_id: my_topic.id, post: {title: "Post Title", body: "Post Body"}
-      expect(response).to have_http_status(403)
+      post :create, topic_id: my_topic.id, id: my_post.id
+      expect(response).to have_http_status(401)
     end
 
     it "DELETE destroy returns http forbidden" do
       delete :destroy, topic_id: my_topic.id, id: my_post.id
-      expect(response).to have_http_status(403)
+      expect(response).to have_http_status(401)
     end
   end
 
@@ -48,12 +48,12 @@ RSpec.describe Api::V1::PostsController, type: :controller do
     end
 
     it "PUT update returns http forbidden" do
-      put :update, topic_id: my_topic.id, post: {title: "Post Title", body: "Post Body"}
+      put :update, topic_id: my_topic.id, id: my_post.id
       expect(response).to have_http_status(403)
     end
 
     it "POST create returns http forbidden" do
-      post :create, topic_id: my_topic.id, post: {title: "Post Title", body: "Post Body"}
+      post :create, topic_id: my_topic.id, id: my_post.id
       expect(response).to have_http_status(403)
     end
 
@@ -71,7 +71,7 @@ RSpec.describe Api::V1::PostsController, type: :controller do
     end
 
     describe "PUT update" do
-      before { put :update, topic_id: my_topic.id, post: {title: @new_post.title, body: @new_post.body} }
+      before { put :update, topic_id: my_topic.id, id: my_post.id }
 
       it "returns http success" do
         expect(response).to have_http_status(:success)
