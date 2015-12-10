@@ -14,8 +14,9 @@ class Api::V1::PostsController < Api::V1::BaseController
   end
 
   def create
-    p post_params
-    post = Post.new(post_params)
+    topic = Topic.find(params[:topic_id])
+    post = topic.posts.build(post_params)
+    post.user = @current_user
 
     if post.valid?
       post.save!
@@ -27,8 +28,9 @@ class Api::V1::PostsController < Api::V1::BaseController
 
   def update
     post = Post.find(params[:id])
-
-    if post.update_attributes(post_params)
+    post.update_attributes(post_params)
+    
+    if post.save!
       render json: post.to_json, status: 200
     else
       render json: {error: "Post update failed", status: 400}, status: 400
