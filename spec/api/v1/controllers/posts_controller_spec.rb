@@ -100,6 +100,7 @@ RSpec.describe Api::V1::PostsController, type: :controller do
 
       it "creates a post with the correct attributes" do
         hashed_json = JSON.parse(response.body)
+        p hashed_json
         expect(@new_post.title).to eq hashed_json["title"]
         expect(@new_post.body).to eq hashed_json["body"]
       end

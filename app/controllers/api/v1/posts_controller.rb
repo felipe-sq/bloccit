@@ -14,6 +14,7 @@ class Api::V1::PostsController < Api::V1::BaseController
   end
 
   def create
+    p post_params
     post = Post.new(post_params)
 
     if post.valid?
