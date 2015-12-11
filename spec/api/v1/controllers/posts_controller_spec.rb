@@ -74,6 +74,7 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       before { put :update, topic_id: my_topic.id, id: my_post.id }
 
       it "returns http success" do
+        p @new_post
         expect(response).to have_http_status(:success)
       end
 
@@ -100,7 +101,6 @@ RSpec.describe Api::V1::PostsController, type: :controller do
 
       it "creates a post with the correct attributes" do
         hashed_json = JSON.parse(response.body)
-        p hashed_json
         expect(@new_post.title).to eq hashed_json["title"]
         expect(@new_post.body).to eq hashed_json["body"]
       end

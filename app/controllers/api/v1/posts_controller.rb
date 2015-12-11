@@ -28,9 +28,10 @@ class Api::V1::PostsController < Api::V1::BaseController
 
   def update
     post = Post.find(params[:id])
-    post.update_attributes(post_params)
+    post.assign_attributes(post_params)
+    post.save!
     
-    if post.save!
+    if post.save
       render json: post.to_json, status: 200
     else
       render json: {error: "Post update failed", status: 400}, status: 400
