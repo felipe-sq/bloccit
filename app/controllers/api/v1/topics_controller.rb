@@ -18,7 +18,7 @@ class Api::V1::TopicsController < Api::V1::BaseController
     if topic.update_attributes(topic_params)
       render json: topic.to_json, status: 200
     else
-      render json: {error: "Topic update failed", status: 400}, status: 400
+      render json: { error: "Topic update failed", status: 400 }, status: 400
     end
   end
 
@@ -29,7 +29,7 @@ class Api::V1::TopicsController < Api::V1::BaseController
       topic.save!
       render json: topic.to_json, status: 201
     else
-      render json: {error: "Topic is invalid", status: 400}, status: 400
+      render json: { error: "Topic is invalid", status: 400 }, status: 400
     end
   end
 
@@ -37,9 +37,22 @@ class Api::V1::TopicsController < Api::V1::BaseController
     topic = Topic.find(params[:id])
 
     if topic.destroy
-      render json: {message: "Topic destroyed", status: 200}, status: 200
+      render json: { message: "Topic destroyed", status: 200 }, status: 200
     else
-      render json: {error: "Topic destroy failed", status: 400}, status: 400
+      render json: { error: "Topic destroy failed", status: 400 }, status: 400
+    end
+  end
+
+  def create_post
+    topic = Topic.find(params[:topic_id])
+    post = topic.posts.build(post_params)
+    post.user = @current_user
+
+    if post.valid?
+      post.save!
+      render json: post.to_json, status: 201
+    else
+      render json: { error: "Post is invalid", status: 400 }, status: 400
     end
   end
 
@@ -47,5 +60,9 @@ class Api::V1::TopicsController < Api::V1::BaseController
 
   def topic_params
     params.require(:topic).permit(:name, :description, :public)
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :body)
   end
 end
