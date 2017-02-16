@@ -57,6 +57,24 @@ RSpec.describe Post, type: :model do
         expect( post.points ).to eq(@up_votes - @down_votes)
       end
     end
+  end
+
+
+  describe "#create_vote" do
+    it "calls #create_vote when a post is created" do
+      post = topic.posts.new(title: RandomData.random_sentence, body: RandomData.random_sentence, user: user)
+      expect(post).to receive(:create_vote)
+      post.save
+    end
+
+    it 'creates a vote' do
+      expect { post }.to change { Vote.count }.by(1)
+    end
+
+    it "associates the vote with the post owner" do
+      expect(post.votes.first.user).to eq(post.user)
+    end
+  end
 
     describe "#update_rank" do
       it "calculates the correct rank" do
@@ -77,7 +95,7 @@ RSpec.describe Post, type: :model do
       end
     end
   end
-end
+
 
 # == Schema Information
 #
